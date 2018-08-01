@@ -9,7 +9,11 @@
 </div>
 
 <h1 class="text-center">Welcome to my blog site.</h1>
-
+<div class="container">
+  <div class="dropdown-divider"></div>
+  <h2 class="text-center">Posts</h2>
+  <div class="dropdown-divider"></div>
+</div>
 <!-- <table class="table">
   <thead>
     <tr>
@@ -35,7 +39,7 @@
 </table>
 
 <br> -->
-<% @posts.each do |post| %>
+<% @posts.order(created_at: :desc).each do |post| %>
 <div class="container">
   <div class="card text-white bg-secondary">
     
@@ -43,7 +47,7 @@
       <div class="col-md-3">
         <div class="card-header">
           <h2 class="card-title"><%= post.title %></h2>
-          <%= link_to 'View', post, class: 'btn btn-info' %> <% if admin_signed_in? %>  <%= link_to 'Edit', edit_post_path(post), class: 'btn btn-warning' %> <% end %> <%=  link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+          <%= link_to 'View', post, class: 'btn btn-info' %> <% if admin_signed_in? %>  <%= link_to 'Edit', edit_post_path(post), class: 'btn btn-warning' %> <%=  link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %> <% end %>
         </div>
         <div class="card-footer">
           <small class="text-white">Posted date: <%= post.created_at.to_date %></small>
